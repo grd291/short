@@ -46,7 +46,7 @@
 
       h1 {
         font-size: 5rem;
-        font-weight: 200;
+        font-weight: 100;
         text-align: center;
         opacity: .2;
       }
@@ -278,11 +278,11 @@
         },
         submit ($refs, $nextTick) {
           if (!this.url) {
-            this.alert = { type: 'error', message: 'No url, Input first' }
+            this.alert = { type: 'error', message: 'No url, Input first(没有网址，先输入)' }
             return
           }
           if (this.isValidated()) {
-            this.alert = { type: 'error', message: 'Illegal url' }
+            this.alert = { type: 'error', message: 'Illegal url(非法网址)' }
             return
           }
 
@@ -310,7 +310,7 @@
               $nextTick(() => {
                 $refs.url.select();
                 const successful = document.execCommand('copy');
-                this.alert = { type: 'success', message: successful ? 'Link copied!' : 'Failed to copy'};
+                this.alert = { type: 'success', message: successful ? 'Link copied!(链接已复制！)' : 'Failed to copy(复制失败,请手动复制)'};
               });
              })
             .catch(e => { this.loading = false; 
