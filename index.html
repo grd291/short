@@ -213,7 +213,10 @@
   </head>
   <body>
     <header><h1>Free short links forever</h1><h2>永久免费短链接</h2></header>
-    <main x-data="app" x-cloak>
+    <main x-data="app" x-cloak style="display: flex; justify-content: center; align-items: center; ">
+      <div style="max-width: 30rem; width: 100%; padding: 0 1rem;">
+
+
       <p x-show.transition.opacity="alert" :class="alert?.type" x-text="alert?.message"></p>
       <input placeholder="Input your URL(输入您的网址)" x-model="url" x-ref="url" />
       <details>
@@ -224,7 +227,9 @@
         </div>
       </details>
       <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">Shorten(生成)</button>
+    </div>
     </main>
+
 
 
     <footer style=" background-color: rgba(51,51,51,0); color: #959595; padding: 20px 0; text-align: center; font-family: Arial, sans-serif;">
