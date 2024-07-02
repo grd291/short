@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="asset/img/favicon.png"  >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="asset/js/busuanzi.pure.mini.js"></script>
     <title>short</title>
     <style>
       :root {
@@ -18,7 +19,7 @@
       }
 
       body {
-        max-width: 30rem;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
         padding-left: 2rem;
@@ -45,7 +46,13 @@
 
       h1 {
         font-size: 5rem;
-        font-weight: 300;
+        font-weight: 200;
+        text-align: center;
+        opacity: .2;
+      }
+
+      h2 {
+
         text-align: center;
         opacity: .2;
       }
@@ -128,7 +135,7 @@
         line-height: inherit;
         cursor: pointer;
         user-select: none;
-        transition: border .3s, background .3s,;
+        transition: border .3s, background .3s;
       }
 
       button:hover {
@@ -163,10 +170,12 @@
       }
 
       footer {
-        padding: 1rem;
-        border-top: 1px solid var(--border-color);
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 20px 0;
         text-align: center;
-        opacity: .5;
+        font-family: Arial, sans-serif;
       }
 
       footer i {
@@ -203,22 +212,55 @@
     </style>
   </head>
   <body>
-    <header><h1>short</h1></header>
+    <header><h1>Free short links forever</h1><h2>永久免费短链接</h2></header>
     <main x-data="app" x-cloak>
       <p x-show.transition.opacity="alert" :class="alert?.type" x-text="alert?.message"></p>
-      <input placeholder="Input your URL." x-model="url" x-ref="url" />
+      <input placeholder="Input your URL(输入您的网址)" x-model="url" x-ref="url" />
       <details>
-        <summary>Custom Set</summary>
+        <summary>Custom Set(定制后缀)</summary>
         <div>
-          <input placeholder="slug" x-model="slug" />
-          <small>Slug is random id.</small>
+          <input placeholder="slug(后缀)" x-model="slug" />
+          <small>Slug is random id(生成随机后缀)</small>
         </div>
       </details>
-      <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">Shorten</button>
+      <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">Shorten(生成)</button>
     </main>
-    <footer>
-     <a href="https://www.igengdu.com">igdu</a>
+
+
+    <footer style=" background-color: rgba(51,51,51,0); color: #959595; padding: 20px 0; text-align: center; font-family: Arial, sans-serif;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <div style="margin-bottom: 20px;">
+          <a href="https://github.com/grdnet" target="_blank"
+             style="color: #959595; text-decoration: none; font-size: 0.9em;">
+            本项目托管于GitHub，完全免费使用！ | This project is hosted on GitHub and is completely free to use!
+          </a>
+        </div>
+          <div style="display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin-bottom: 20px;font-size: 0.9em;">
+            <a href="https://github.com/grdnet" target="_blank"
+               style="color: #959595; text-decoration: none;">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"
+                   style="width: 20px; height: 20px; vertical-align: middle; margin-right: 4px;">
+              GitHub |
+            </a>
+              <a href="/privacy-policy" style="color: #959595; text-decoration: none;">隐私政策 | Privacy Policy</a>
+              <a href="/terms-of-service" style="color: #959595; text-decoration: none;">服务条款 | Terms of Service</a>
+<!--              <a href="/contact" style="color: #959595; text-decoration: none;">联系我们 | Contact Us</a>-->
+          </div>
+        <div style="margin-bottom: 20px;">
+          <p style="margin: 0; font-size: 0.9em;">
+            © 2024 代码原作者保留所有权利。 | All Rights Reserved.
+          </p>
+        </div>
+        <div style="margin-bottom: 20px;">
+
+           <span id="busuanzi_container_site_pv">Total site visits:<span id="busuanzi_value_site_pv"></span>times</span>
+
+
+        </div>
+      </div>
     </footer>
+
+
     <script src="asset/js/alpine.js"></script>
     <script>
       const app = {
